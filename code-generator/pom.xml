@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>db-mybatis-spring-boot</artifactId>
+        <groupId>smq.study</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>code-generator</artifactId>
+    <packaging>jar</packaging>
+
+    <name>code-generator</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <!--http://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#compilerArgs-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <!--<compilerArgs>-->
+                        <!--<args>-processor=none</args>-->
+                    <!--</compilerArgs>-->
+                    <!--<proc>only</proc>-->
+                    <proc>none</proc>
+                    <annotationProcessors>
+                        <annotationProcessor>smq.study.parser.GenerateMybatisMapperProcessor</annotationProcessor>
+                    </annotationProcessors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
