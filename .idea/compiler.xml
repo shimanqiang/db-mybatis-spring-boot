@@ -8,12 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="codegenerator" />
         <module name="mybatis-spring-boot-starter" />
+        <module name="simples" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="code-generator" target="1.8" />
       <module name="codegenerator" target="1.5" />
-      <module name="db-mybatis-spring-boot" target="1.5" />
+      <module name="db-mybatis-spring-boot" target="1.7" />
       <module name="mybatis-spring-boot-starter" target="1.8" />
       <module name="simples" target="1.8" />
     </bytecodeTargetLevel>

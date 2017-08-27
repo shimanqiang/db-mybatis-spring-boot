@@ -3,7 +3,8 @@ package smq.study.anno;
 import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)/*class leave*/
-@Retention(RetentionPolicy.CLASS)/*source scope*/
+//@Retention(RetentionPolicy.SOURCE)/*source scope*/
+@Retention(RetentionPolicy.CLASS)/*class scope*/
 @Documented
 @Inherited
 public @interface GenerateMybatisMapper {

@@ -30,6 +30,28 @@
         </developer>
     </developers>
 
+    <repositories>
+        <!--阿里云仓库-->
+        <repository>
+            <id>aliyun-repo</id>
+            <name>aliyun repo</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <!-- 中央仓库1 -->
+        <repository>
+            <id>repo1</id>
+            <name>Human Readable Name for this repository.</name>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+
+        <!-- 中央仓库2 -->
+        <repository>
+            <id>repo2</id>
+            <name>Human Readable Name for this repository.</name>
+            <url>http://repo2.maven.org/maven2/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <smq.project.version>1.0-SNAPSHOT</smq.project.version>
@@ -48,6 +70,7 @@
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
+                        <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
             </plugins>
@@ -71,9 +94,11 @@
 
     </dependencyManagement>
     <distributionManagement>
-
+        <!--发布组件时候，需要配置的仓库-->
     </distributionManagement>
-    <pluginRepositories></pluginRepositories>
+    <pluginRepositories>
+        <!--TODO-->
+    </pluginRepositories>
 
 
 </project>

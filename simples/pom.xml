@@ -25,7 +25,7 @@
         <dependency>
             <groupId>smq.study</groupId>
             <artifactId>code-generator</artifactId>
-            <version>1.1</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
@@ -34,16 +34,16 @@
                 <!--http://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html#compilerArgs-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
-                    <!--<proc>only</proc>-->
-                    <!--<proc>none</proc>-->
-                    <compilerArgument>-proc:none</compilerArgument>
-                    <annotationProcessors>
-                        <annotationProcessor>smq.study.parser.GenerateMybatisMapperProcessor</annotationProcessor>
-                    </annotationProcessors>
-                </configuration>
+                <!--<configuration>-->
+                    <!--<fork>true</fork>-->
+                    <!--<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
+                    <!--&lt;!&ndash;<proc>only</proc>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<proc>none</proc>&ndash;&gt;-->
+                    <!--<compilerArgument>-proc:none</compilerArgument>-->
+                    <!--<annotationProcessors>-->
+                        <!--<annotationProcessor>smq.study.parser.GenerateMybatisMapperProcessor</annotationProcessor>-->
+                    <!--</annotationProcessors>-->
+                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>

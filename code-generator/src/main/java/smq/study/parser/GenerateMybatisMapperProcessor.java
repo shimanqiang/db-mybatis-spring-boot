@@ -21,9 +21,13 @@ public class GenerateMybatisMapperProcessor extends AbstractProcessor {
     }
 
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println(1111);
-        messager.printMessage(Diagnostic.Kind.WARNING,"==========smq===========");
-        return false;
+
+        for (TypeElement te : annotations) {
+            System.out.println(te.getSimpleName());
+        }
+        System.out.println("eee");
+        messager.printMessage(Diagnostic.Kind.WARNING, "==========smq===========");
+        return true;
     }
 
     @Override
