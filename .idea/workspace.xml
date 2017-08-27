@@ -2,53 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e581474d-bf5f-4a55-ac28-f6c415787eb8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/anno/Column.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/anno/PrimaryKey.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/anno/SQL.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/parser/GenerateSqlProcessor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/utils/StringUtils.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__smq_study_code_generator_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__smq_study_code_generator_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/classes/META-INF/services/javax.annotation.processing.Processor" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/classes/smq/study/anno/GenerateMybatisMapper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/classes/smq/study/parser/GenerateMybatisMapperProcessor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/code-generator-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/code-generator-1.1.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/surefire-reports/TEST-smq.study.AppTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/surefire-reports/smq.study.AppTest.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/target/test-classes/smq/study/AppTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/classes/smq/study/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/mybatis-spring-boot-starter-1.0-SNAPSHOT.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/surefire-reports/TEST-smq.study.AppTest.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/surefire-reports/smq.study.AppTest.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/target/test-classes/smq/study/AppTest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simples/target/classes/smq/study/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simples/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/simples/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code-generator/pom.xml" afterPath="$PROJECT_DIR$/code-generator/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/anno/GenerateMybatisMapper.java" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/anno/GenerateMybatisMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/parser/GenerateMybatisMapperProcessor.java" afterPath="$PROJECT_DIR$/code-generator/src/main/java/smq/study/parser/GenerateMybatisMapperProcessor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code-generator/src/main/resources/META-INF/services/javax.annotation.processing.Processor" afterPath="$PROJECT_DIR$/code-generator/src/main/resources/META-INF/services/javax.annotation.processing.Processor" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db-mybatis-spring-boot.iml" afterPath="$PROJECT_DIR$/db-mybatis-spring-boot.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simples/pom.xml" afterPath="$PROJECT_DIR$/simples/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simples/simples.iml" afterPath="$PROJECT_DIR$/simples/simples.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simples/src/main/java/smq/study/App.java" afterPath="$PROJECT_DIR$/simples/src/main/java/smq/study/App.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/README.MD" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/code-generator/code-generator.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db-mybatis-spring-boot.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mybatis-spring-boot-starter/mybatis-spring-boot-starter.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/simples/simples.iml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -516,6 +482,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="GO_FMT" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -833,7 +800,7 @@
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.54772234" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43383947" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26279318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -872,6 +839,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add annotation for generate sql script" />
+    <option name="LAST_COMMIT_MESSAGE" value="add annotation for generate sql script" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1044,6 +1015,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="9" lean-forward="false" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
