@@ -11,3 +11,4 @@ bin/
 .project
 logs/
 *.iml
+target/
