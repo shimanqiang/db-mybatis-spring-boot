@@ -5,3 +5,5 @@
 * 扩展spring boot 简易mybatis 数据库操作
 
 
+## 已经完成
+* sql生成
