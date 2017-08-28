@@ -62,7 +62,7 @@ public class GenerateSqlProcessor extends AbstractProcessor {
             }
 
             Set<ColumnBean> columnBeanSet = new TreeSet<>();
-            Map<String, ColumnBean> columnBeanMap = new TreeMap();
+            Map<String, ColumnBean> columnBeanMap = new LinkedHashMap<>();
             //获取被注解类的所有元素
             List<? extends Element> enclosedElements = e.getEnclosedElements();
             for (Element ee : enclosedElements) {

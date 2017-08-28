@@ -22,7 +22,7 @@ public class App {
     @Column(defaultValue = "tom",comment = "名字",type = "char" ,len = 200)
     private String name;
 
-    @Column(notNull = true)
+    @Column(notNull = true,len = 4)
     private int ageUper;
 
     private Date updateTime;
