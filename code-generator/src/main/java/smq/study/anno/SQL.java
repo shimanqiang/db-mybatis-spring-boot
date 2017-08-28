@@ -12,11 +12,25 @@ import java.lang.annotation.*;
 @Documented
 public @interface SQL {
     /**
+     * table name
+     * override tablePrefix()
+     * override fieldNamePolicy()
+     * @return
+     */
+    String name() default "";
+
+    /**
      * table prefix
      *
      * @return
      */
     String tablePrefix() default "t_";
+
+    /**
+     *
+     * @return
+     */
+    FieldNamingPolicy fieldNamePolicy() default FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES;
 
     /**
      * column prefix
@@ -39,7 +53,7 @@ public @interface SQL {
      *
      * @return
      */
-    String desc() default "";
+    String comment() default "";
 
     /**
      * AUTO_INCREMENT
@@ -71,5 +85,10 @@ public @interface SQL {
 
     enum DBEngine {
         MyISAM, InnoDB
+    }
+
+    enum FieldNamingPolicy{
+        LOWER_CASE_WITH_UNDERSCORES,//<li>someFieldName ---> some_field_name</li>
+        LOWER_CASE_WITH_DASHES,//<li>someFieldName ---> some-field-name</li>
     }
 }

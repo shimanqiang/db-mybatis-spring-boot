@@ -19,6 +19,27 @@ public @interface Column {
      */
     String name() default "";
 
+    /**
+     * 类型
+     *
+     * @return
+     */
+    String type() default "";
+
+    /**
+     * 长度
+     *
+     * @return
+     */
+    int len() default 0;
+
+    /**
+     * 主键
+     *
+     * @return
+     */
+    boolean primaryKey() default false;
+
 
     /**
      * 默认值
@@ -27,10 +48,18 @@ public @interface Column {
      */
     String defaultValue() default "";
 
+
+    /**
+     * 是否为空
+     *
+     * @return
+     */
+    boolean notNull() default false;
+
     /**
      * smq列注释
      *
      * @return
      */
-    String desc() default "";
+    String comment() default "";
 }

@@ -1,38 +1,7 @@
-* maven配置
+## 目标
 
-```
+* 自动生成sql脚本
+* 自动生成mybatis Mapper（能否扩展）
+* 扩展spring boot 简易mybatis 数据库操作
 
- <plugin>
-    <!--http://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html-->
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-        <proc>none</proc>
-        <annotationProcessors>
-            <annotationProcessor>smq.study.parser.GenerateMybatisMapperProcessor</annotationProcessor>
-        </annotationProcessors>
-    </configuration>
-</plugin>
-```
 
-* Gradle配置
-```
-configurations {
-    annotationProcessor
-}
-
-task configureAnnotationProcessing(type: JavaCompile, group: 'build', description: 'Processes the @Configuration classes') {
-  source = sourceSets.main.java
-  classpath = configurations.compile + configurations.annotationProcessor
-  options.compilerArgs = [
-          "-proc:none",
-          "-processor", "com.github.pellaton.springconfigvalidation.SpringConfigurationValidationProcessorJava8"
-  ]
-  destinationDir = buildDir
-}
-
-compileJava {
-    dependsOn configureAnnotationProcessing
-}
-
-```

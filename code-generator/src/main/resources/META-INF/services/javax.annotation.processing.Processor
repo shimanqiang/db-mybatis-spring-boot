@@ -1,2 +1,2 @@
 smq.study.parser.GenerateSqlProcessor
-smq.study.parser.GenerateMybatisMapperProcessor
+#smq.study.parser.GenerateMybatisMapperProcessor
