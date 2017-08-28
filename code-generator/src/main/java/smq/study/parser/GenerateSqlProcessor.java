@@ -7,10 +7,11 @@ import smq.study.utils.StringUtils;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.*;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Types;
-import javax.tools.JavaFileObject;
 import java.io.*;
 import java.util.*;
 
@@ -52,91 +53,30 @@ public class GenerateSqlProcessor extends AbstractProcessor {
 
             String columnPrefix = sql.columnPrefix();
 
+            /**
+             * 保存解析结果
+             */
+            Map<String, ColumnBean> columnBeanMap = new LinkedHashMap<>();
+
             //强转成方法对应的element，同理，如果你的注解是一个类，那你可以强转成TypeElement
             TypeElement te = (TypeElement) e;
+
+            //获取被注解类的所有元素：e.getEnclosedElements()
+            processElement(columnPrefix, columnBeanMap, e.getEnclosedElements());
+
+            //处理父类
             TypeMirror superclass = te.getSuperclass();
-            if (superclass instanceof Object) {
+            if (Object.class.getName().equalsIgnoreCase(superclass.toString())) {
                 System.out.println("超类是object不需要处理");
             } else {
-                //TODO 处理父类
+                TypeElement superElement = (TypeElement) typeUtils.asElement(superclass);
+                //获取父类被注解类的所有元素，并处理
+                processElement(columnPrefix, columnBeanMap, superElement.getEnclosedElements());
             }
 
-            Set<ColumnBean> columnBeanSet = new TreeSet<>();
-            Map<String, ColumnBean> columnBeanMap = new LinkedHashMap<>();
-            //获取被注解类的所有元素
-            List<? extends Element> enclosedElements = e.getEnclosedElements();
-            for (Element ee : enclosedElements) {
-                //处理类的成员变量
-                if (ee.getKind() != ElementKind.FIELD) {
-                    //否则跳过
-                    continue;
-                }
-                ColumnBean columnBean = new ColumnBean();
-
-                /**
-                 * 赋值：默认值
-                 */
-                //列名称
-                columnBean.setName(columnPrefix + StringUtils.lowerCamelCaseWithUnderline(ee.getSimpleName().toString()));
-                //类型&长度-自动判断
-                TypeMirror typeMirror = ee.asType();
-                if (String.class.getName().equalsIgnoreCase(typeMirror.toString())) {
-                    columnBean.setType("varchar");
-                    columnBean.setLen(45);
-                } else if (int.class.getName().equalsIgnoreCase(typeMirror.toString())
-                        || Integer.class.getName().equalsIgnoreCase(typeMirror.toString())) {
-                    columnBean.setType("int");
-                    columnBean.setLen(11);
-                } else if (Date.class.getName().equalsIgnoreCase(typeMirror.toString())) {
-                    columnBean.setType("datetime");
-                }
-                //主键：默认false
-                //是否为空:默认false
-                //默认值
-                //注释
-
-                /**
-                 * 根据column注解赋值
-                 */
-                Column column = ee.getAnnotation(Column.class);
-                if (column != null) {
-                    System.out.println(column.name());
-                    //列名称
-                    if (StringUtils.isNotEmpty(column.name())) {
-                        columnBean.setName(column.name());
-                    }
-                    //类型
-                    if (StringUtils.isNotEmpty(column.type())) {
-                        columnBean.setType(column.type());
-                    }
-                    //长度
-                    if (0 != column.len()) {
-                        columnBean.setLen(column.len());
-                    }
-
-                    //主键
-                    if (column.primaryKey()) {
-                        columnBean.setPrimaryKey(column.primaryKey());
-                    }
-                    //是否为空
-                    if (column.notNull()) {
-                        columnBean.setNotNull(column.notNull());
-                    }
-                    //默认值
-                    if (StringUtils.isNotEmpty(column.defaultValue())) {
-                        columnBean.setDefaultValue(column.defaultValue());
-                    }
-                    //注释
-                    if (StringUtils.isNotEmpty(column.comment())) {
-                        columnBean.setComment(column.comment());
-                    }
-                }
-
-                //保存起来
-                columnBeanMap.put(columnBean.getName(), columnBean);
-                //columnBeanSet.add(columnBean);
-            }
-
+            /**
+             * 拼接sql脚本
+             */
             String primaryKey = null;
             for (String key : columnBeanMap.keySet()) {
                 ColumnBean bean = columnBeanMap.get(key);
@@ -201,6 +141,86 @@ public class GenerateSqlProcessor extends AbstractProcessor {
         }
 
         return true;
+    }
+
+    private void processElement(String columnPrefix, Map<String, ColumnBean> columnBeanMap, List<? extends Element> enclosedElements) {
+        for (Element ee : enclosedElements) {
+            //处理类的成员变量
+            if (ee.getKind() != ElementKind.FIELD) {
+                //否则跳过
+                continue;
+            }
+
+            String insertMapKey = ee.getSimpleName().toString();
+            if (columnBeanMap.get(insertMapKey) != null) {
+                //先处理子类，如果子类处理了，父类中不处理
+                continue;
+            }
+
+            ColumnBean columnBean = new ColumnBean();
+
+            //保存到map的key。使用类的名称，防止重复
+            /**
+             * 赋值：默认值
+             */
+            //列名称
+            columnBean.setName(columnPrefix + StringUtils.lowerCamelCaseWithUnderline(ee.getSimpleName().toString()));
+            //类型&长度-自动判断
+            TypeMirror typeMirror = ee.asType();
+            if (String.class.getName().equalsIgnoreCase(typeMirror.toString())) {
+                columnBean.setType("varchar");
+                columnBean.setLen(45);
+            } else if (int.class.getName().equalsIgnoreCase(typeMirror.toString())
+                    || Integer.class.getName().equalsIgnoreCase(typeMirror.toString())) {
+                columnBean.setType("int");
+                columnBean.setLen(11);
+            } else if (Date.class.getName().equalsIgnoreCase(typeMirror.toString())) {
+                columnBean.setType("datetime");
+            }
+            //主键：默认false
+            //是否为空:默认false
+            //默认值
+            //注释
+
+            /**
+             * 根据column注解赋值
+             */
+            Column column = ee.getAnnotation(Column.class);
+            if (column != null) {
+                //列名称
+                if (StringUtils.isNotEmpty(column.name())) {
+                    columnBean.setName(column.name());
+                }
+                //类型
+                if (StringUtils.isNotEmpty(column.type())) {
+                    columnBean.setType(column.type());
+                }
+                //长度
+                if (0 != column.len()) {
+                    columnBean.setLen(column.len());
+                }
+
+                //主键
+                if (column.primaryKey()) {
+                    columnBean.setPrimaryKey(column.primaryKey());
+                }
+                //是否为空
+                if (column.notNull()) {
+                    columnBean.setNotNull(column.notNull());
+                }
+                //默认值
+                if (StringUtils.isNotEmpty(column.defaultValue())) {
+                    columnBean.setDefaultValue(column.defaultValue());
+                }
+                //注释
+                if (StringUtils.isNotEmpty(column.comment())) {
+                    columnBean.setComment(column.comment());
+                }
+            }
+
+            //保存起来
+            columnBeanMap.put(insertMapKey, columnBean);
+        }
     }
 
     @Override

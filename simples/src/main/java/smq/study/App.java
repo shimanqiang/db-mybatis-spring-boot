@@ -11,7 +11,7 @@ import java.util.Date;
  */
 //@GenerateMybatisMapper
 @SQL(columnPrefix = "a_")
-public class App {
+public class App extends Parent{
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
