@@ -1,0 +1,61 @@
+@SupportedAnnotationTypes({ "xxx.MyAnnotation" })
+@SupportedSourceVersion(SourceVersion.RELEASE_6)
+public class MongoDocumentAnnotationProcessor extends AbstractProcessor {
+
+    private Types typeUtils = null;
+    private Elements elementUtils = null;
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnv) {
+        super.init(processingEnv);
+        typeUtils = processingEnv.getTypeUtils();
+        elementUtils = processingEnv.getElementUtils();
+    }
+
+    @Override
+    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        debug("Running " + getClass().getSimpleName());
+        if (roundEnv.processingOver() || annotations.size() == 0) {
+            return false;
+        }
+        for (Element element : roundEnv.getRootElements()) {
+            if (element.getKind() == ElementKind.CLASS && isAnnotatedWithMongoDocument(element)) {
+                for (VariableElement variableElement : ElementFilter.fieldsIn(element.getEnclosedElements())) {
+                    String fieldName = variableElement.getSimpleName().toString();
+                    Element innerElement = typeUtils.asElement(variableElement.asType());
+                    String fieldClass = "";
+                    if (innerElement == null) { // Primitive type
+                        PrimitiveType primitiveType = (PrimitiveType) variableElement.asType();
+                        fieldClass = typeUtils.boxedClass(primitiveType).getQualifiedName().toString();
+                    } else {
+                        if (innerElement instanceof TypeElement) {
+                            TypeElement typeElement = (TypeElement) innerElement;
+                            fieldClass = typeElement.getQualifiedName().toString();
+                            TypeElement collectionType = elementUtils.getTypeElement("java.util.Collection");
+                            if (typeUtils.isAssignable(typeElement.asType(), collectionType.asType())) {
+                                TypeVariable typeMirror = (TypeVariable)((DeclaredType)typeElement.asType()).getTypeArguments().get(0);
+                                TypeParameterElement typeParameterElement = (TypeParameterElement) typeUtils.asElement(typeMirror);
+                                // I am stuck here. I don't know how to get the
+                                // full qualified class name of the generic type of
+                                // property 'roles' when the code processes the User
+                                // class as above. What I want to retrieve is the
+                                // 'my.package.Role' value
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean isAnnotated(Element element) {
+        List<? extends AnnotationMirror> annotationMirrors = element.getAnnotationMirrors();
+        if (annotationMirrors == null || annotationMirrors.size() == 0) return false;
+        for (AnnotationMirror annotationMirror : annotationMirrors) {
+            String qualifiedName = ((TypeElement)annotationMirror.getAnnotationType().asElement()).getQualifiedName().toString();
+            if ("xxx.MyAnnotation".equals(qualifiedName)) return true;
+        }
+        return false;
+    }
+}
